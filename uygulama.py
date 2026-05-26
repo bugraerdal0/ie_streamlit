@@ -3,8 +3,8 @@ import pandas as pd
 import plotly.graph_objects as go
 import numpy as np
 
-st.set_page_config(page_title="KÄPT'N TC", layout="wide")
-st.title("KÄPT'N TC — Değişiklik Maliyetlendirme Sistemi")
+st.set_page_config(page_title="KÄPT'N", layout="wide")
+st.title("KÄPT'N — Değişiklik Maliyetlendirme Sistemi")
 
 # ── SIDEBAR: PARAMETRELER ────────────────────────────────────────────────────
 st.sidebar.header("Parametreler")
