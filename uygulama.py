@@ -339,7 +339,7 @@ if opt_var:
 
     if fark > 0:
         st.error(
-            f"{sez_t}. gün yerine {int(opt_t)}. günde geçiş yapılsaydı "
+            f"{sez_t}. gün yerine {int(opt_t)}. günde değişiklik yapılsaydı "
             f"**{fark:,.0f} TL** tasarruf edilirdi (%{fark_pct:.1f})."
         )
     elif fark < 0:
