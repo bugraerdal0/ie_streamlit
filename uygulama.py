@@ -357,14 +357,38 @@ st.divider()
 
 # ── DETAY TABLO ──────────────────────────────────────────────────────────────
 with st.expander("Tüm günlerin maliyet tablosu"):
+    st.markdown(
+        "🟩 Optimal gün &nbsp;&nbsp; "
+        "🟨 LT öncesi (geçiş yapılamaz) &nbsp;&nbsp; "
+        "🟥 MinStock ihlali",
+        unsafe_allow_html=True
+    )
+
     display = df[["t", "C_scrap", "C_inv", "C_labor", "C_prop", "TC", "minstock_ok"]].copy()
     display.columns = ["Gün (t)", "C_scrap", "C_inv", "C_labor", "C_prop", "TC", "MinStock OK"]
     display = display.set_index("Gün (t)")
+
+    def satir_stili(row):
+        styles = []
+        for col in row.index:
+            t        = row.name
+            minstock = df[df["t"] == t]["minstock_ok"].values[0]
+            is_opt   = opt_var and t == int(opt["t"])
+            if is_opt:
+                s = "background-color: rgba(29,158,117,0.35); color: #ffffff; font-weight: bold"
+            elif not minstock:
+                s = "background-color: rgba(200,16,46,0.20); color: #aaaaaa"
+            elif t < LT:
+                s = "background-color: rgba(255,200,0,0.10); color: #aaaaaa"
+            else:
+                s = ""
+            styles.append(s)
+        return styles
+
     st.dataframe(
-        display.style.format({"C_scrap": "{:,.0f}", "C_inv": "{:,.0f}",
-                              "C_labor": "{:,.0f}", "C_prop": "{:,.0f}", "TC": "{:,.0f}"})
-               .highlight_min(subset=["TC"], color="#D1FAE5")
-               .apply(lambda x: ["background: #FEF3C7" if x.name < LT
-                                  else "" for _ in x], axis=1),
+        display.style
+               .format({"C_scrap": "{:,.0f}", "C_inv": "{:,.0f}",
+                        "C_labor": "{:,.0f}", "C_prop": "{:,.0f}", "TC": "{:,.0f}"})
+               .apply(satir_stili, axis=1),
         use_container_width=True
     )
