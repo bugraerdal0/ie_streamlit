@@ -9,11 +9,11 @@ st.markdown("""
 <style>
     /* Global font büyütme */
     html, body, [class*="css"] {
-        font-size: 24px !important;
+        font-size: 23px !important;
     }
     /* Metrik kutucukları */
     [data-testid="metric-container"] {
-        font-size: 22px !important;
+        font-size: 20px !important;
     }
     /* Sidebar */
     [data-testid="stSidebar"] * {
