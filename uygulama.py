@@ -9,7 +9,7 @@ st.markdown("""
 <style>
     /* Global font büyütme */
     html, body, [class*="css"] {
-        font-size: 26px !important;
+        font-size: 24px !important;
     }
     /* Metrik kutucukları */
     [data-testid="metric-container"] {
