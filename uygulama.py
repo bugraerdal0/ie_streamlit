@@ -4,28 +4,6 @@ import plotly.graph_objects as go
 import numpy as np
 
 st.set_page_config(page_title="KÄPT'N", layout="wide")
-
-st.markdown("""
-<style>
-    /* Global font büyütme */
-    html, body, [class*="css"] {
-        font-size: 24px !important;
-    }
-    /* Metrik kutucukları */
-    [data-testid="metric-container"] {
-        font-size: 20px !important;
-    }
-    /* Sidebar */
-    [data-testid="stSidebar"] * {
-        font-size: 18px !important;
-    }
-    /* Buton ve inputlar */
-    .stNumberInput input, .stSelectbox select {
-        font-size: 18px !important;
-    }
-</style>
-""", unsafe_allow_html=True)
-
 st.title("KÄPT'N — Değişiklik Maliyetlendirme Sistemi")
 
 # ── SIDEBAR: PARAMETRELER ────────────────────────────────────────────────────
