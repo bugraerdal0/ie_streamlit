@@ -88,7 +88,7 @@ st.divider()
 
 # ── BAĞLI PARÇALAR ───────────────────────────────────────────────────────────
 st.subheader("Bağlı Parçalar — Yayılım")
-st.caption("Geçişten etkilenebilecek bağlı parçaları girin. Satır ekleyip çıkarabilirsiniz.")
+st.caption("Değişiklikten etkilenebilecek bağlı parçaları girin. Satır ekleyip çıkarabilirsiniz.")
 
 default_j = pd.DataFrame({
     "Parça Adı":               ["Bağlı Parça A"],
@@ -193,7 +193,7 @@ else:
 if opt_var:
     st.subheader("Sonuçlar")
     c1, c2, c3, c4 = st.columns(4)
-    c1.metric("Optimal Geçiş Günü",        f"{int(opt['t'])}. gün")
+    c1.metric("Optimal Değişiklik Günü",        f"{int(opt['t'])}. gün")
     c2.metric("Minimum TC",                f"{opt['TC']:,.0f} TL")
     c3.metric("En Kötü Karardan Tasarruf", f"{saving:,.0f} TL")
     c4.metric("Tasarruf Oranı",            f"%{saving / worst['TC'] * 100:.0f}")
@@ -242,7 +242,7 @@ fig.add_scatter(name="TC", x=df["t"], y=df["TC"], mode="lines",
                 line=dict(color="rgba(255,255,255,0.4)", width=2, dash="dot"))
 fig.update_layout(
     barmode="stack", height=400,
-    xaxis_title="Geçiş günü (t)",
+    xaxis_title="Değişiklik günü (t)",
     yaxis_title="Maliyet (TL)",
     legend=dict(orientation="h", y=1.08),
     margin=dict(t=40, b=40),
@@ -273,7 +273,7 @@ st.divider()
 
 # ── DUYARLILIK ANALİZİ ───────────────────────────────────────────────────────
 st.subheader("Duyarlılık Analizi")
-st.caption("Seçilen parametrenin optimal geçiş günü üzerindeki etkisini gösterir.")
+st.caption("Seçilen parametrenin optimal Değişiklik günü üzerindeki etkisini gösterir.")
 
 SENS_PARAMS = {
     "Temin süresi (LT)":        {"key": "LT",    "range": list(range(1, min(SOP, 45), 3))},
@@ -381,7 +381,7 @@ st.divider()
 with st.expander("Tüm günlerin maliyet tablosu"):
     st.markdown(
         "🟩 Optimal gün &nbsp;&nbsp; "
-        "🟨 LT öncesi (geçiş yapılamaz) &nbsp;&nbsp; "
+        "🟨 LT öncesi (Değişiklik yapılamaz) &nbsp;&nbsp; "
         "🟥 MinStock ihlali",
         unsafe_allow_html=True
     )
